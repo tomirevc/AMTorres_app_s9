@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Colores principales -->
+    <color name="colorPrimary">#01DB96</color>
+    <color name="colorPrimaryDark">#00A870</color>
+    <color name="colorAccent">#33BCEE</color>
+
+    <!-- Colores base -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="dark_background">#2C2C2C</color>
+
+    <!-- Colores del gradiente -->
+    <color name="gradient_start">#01DB96</color>
+    <color name="gradient_end">#33BCEE</color>
+
+    <!-- Colores del switch -->
+    <color name="switch_active">#01DB96</color>
+    <color name="switch_inactive">#CCCCCC</color>
+    <color name="switch_thumb_active">#FFFFFF</color>
+    <color name="switch_thumb_inactive">#FFFFFF</color>
+
+    <!-- Color de sombra -->
+    <color name="shadow_color">#33000000</color>
 </resources>

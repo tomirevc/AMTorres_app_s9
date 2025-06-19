@@ -1,59 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:padding="24dp"
+        android:gravity="center_horizontal">
 
-        <EditText
-            android:id="@+id/editTextUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ingresa tu nombre"
-            android:inputType="textPersonName"
-            android:layout_marginBottom="16dp" />
-
-        <Button
-            android:id="@+id/buttonSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guardar"
-            android:layout_marginBottom="16dp" />
-
-        <Button
-            android:id="@+id/buttonLoad"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cargar"
-            android:layout_marginBottom="16dp" />
-
-        <Button
-            android:id="@+id/buttonClear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Limpiar Todo"
-            android:layout_marginBottom="16dp" />
-
+        <!-- Título Principal -->
         <TextView
-            android:id="@+id/textViewResult"
-            android:layout_width="match_parent"
+            android:id="@+id/tvMainTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="Implementando\nSharedPreferences"
+            android:textSize="25sp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="?attr/titleTextColor"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Imagen Principal -->
+        <ImageView
+            android:id="@+id/ivMainImage"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/ic_menu"
+            android:layout_marginBottom="32dp"
+            android:layout_gravity="center"
+            android:elevation="9dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp" />
+
+        <!-- Sección Contador de Visitas -->
+        <TextView
+            android:id="@+id/tvVisitCounterTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contador de visitas"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="?attr/subtitleTextColor"
+            android:gravity="center"
+            android:background="@drawable/underline_background"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Contador de Visitas -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/ivEyeIcon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="?attr/eyeIcon"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:id="@+id/tvVisitCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="24sp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="?attr/primaryTextColor" />
+
+        </LinearLayout>
+
+        <!-- Botón Reiniciar Visitas -->
+        <Button
+            android:id="@+id/btnResetVisits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reiniciar visitas"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_bold"
+            android:background="@drawable/gradient_button"
+            android:paddingHorizontal="32dp"
+            android:paddingVertical="12dp"
+            android:layout_marginBottom="32dp"
+            android:textAllCaps="false" />
+
+        <!-- Sección Crear Usuarios -->
+        <TextView
+            android:id="@+id/tvCreateUsersTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crear usuarios"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="?attr/subtitleTextColor"
+            android:gravity="center"
+            android:background="@drawable/underline_background"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Botón Perfil de Usuarios -->
+        <Button
+            android:id="@+id/btnUserProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perfil de usuarios"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingHorizontal="32dp"
+            android:paddingVertical="12dp"
+            android:layout_marginBottom="32dp"
+            android:textAllCaps="false" />
+
+        <!-- Sección Modo Oscuro -->
+        <TextView
+            android:id="@+id/tvDarkModeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modo oscuro"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="?attr/subtitleTextColor"
+            android:gravity="center"
+            android:background="@drawable/underline_background"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Switch Modo Oscuro -->
+        <Switch
+            android:id="@+id/switchDarkMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:track="@drawable/switch_track"
+            android:layout_marginBottom="30dp" />
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

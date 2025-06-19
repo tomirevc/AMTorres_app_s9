@@ -1,106 +1,98 @@
 package com.example.app_s9
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
+import android.widget.Switch
 import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.appcompat.app.AppCompatDelegate
 
 class MainActivity : AppCompatActivity() {
-    
+
     private lateinit var sharedPreferencesHelper: SharedPreferencesHelper
-    private lateinit var editTextUsername: EditText
-    private lateinit var buttonSave: Button
-    private lateinit var buttonLoad: Button
-    private lateinit var buttonClear: Button
-    private lateinit var textViewResult: TextView
+    private lateinit var tvVisitCount: TextView
+    private lateinit var btnResetVisits: Button
+    private lateinit var btnUserProfile: Button
+    private lateinit var switchDarkMode: Switch
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-        
-        // Inicializar SharedPreferencesHelper
+
         sharedPreferencesHelper = SharedPreferencesHelper(this)
-        
-        // Inicializar vistas
+
+        applyTheme()
+
+        setContentView(R.layout.activity_main)
+
         initViews()
-        
-        // Configurar listeners
         setupListeners()
-        
-        // Verificar si es la primera vez que se abre la app
-        checkFirstTime()
+        updateVisitCount()
+        setupDarkModeSwitch()
     }
-    
+
     private fun initViews() {
-        editTextUsername = findViewById(R.id.editTextUsername)
-        buttonSave = findViewById(R.id.buttonSave)
-        buttonLoad = findViewById(R.id.buttonLoad)
-        buttonClear = findViewById(R.id.buttonClear)
-        textViewResult = findViewById(R.id.textViewResult)
+        tvVisitCount = findViewById(R.id.tvVisitCount)
+        btnResetVisits = findViewById(R.id.btnResetVisits)
+        btnUserProfile = findViewById(R.id.btnUserProfile)
+        switchDarkMode = findViewById(R.id.switchDarkMode)
     }
-    
+
     private fun setupListeners() {
-        buttonSave.setOnClickListener {
-            saveData()
+        btnResetVisits.setOnClickListener {
+            resetVisitCount()
         }
-        
-        buttonLoad.setOnClickListener {
-            loadData()
+
+        btnUserProfile.setOnClickListener {
+            val intent = Intent(this, UserProfileActivity::class.java)
+            startActivity(intent)
         }
-        
-        buttonClear.setOnClickListener {
-            clearAllData()
+
+        switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+            saveDarkModePreference(isChecked)
+            applyTheme()
+            recreate()
         }
     }
-    
-    private fun saveData() {
-        val username = editTextUsername.text.toString().trim()
-        
-        if (username.isEmpty()) {
-            Toast.makeText(this, "Por favor ingresa un nombre", Toast.LENGTH_SHORT).show()
-            return
-        }
-        
-        // Guardar datos
-        sharedPreferencesHelper.saveString(SharedPreferencesHelper.KEY_USERNAME, username)
-        sharedPreferencesHelper.saveBoolean(SharedPreferencesHelper.KEY_IS_FIRST_TIME, false)
-        sharedPreferencesHelper.saveInt(SharedPreferencesHelper.KEY_USER_ID, (1000..9999).random())
-        
-        Toast.makeText(this, "Datos guardados exitosamente", Toast.LENGTH_SHORT).show()
-        editTextUsername.setText("")
+
+    private fun updateVisitCount() {
+        // Solo incrementa la cuenta de visitas si la actividad se inicia por primera vez
+        var visitCount = sharedPreferencesHelper.getVisitCount()
+        visitCount++
+
+        // Guardar el nuevo valor del contador de visitas
+        sharedPreferencesHelper.saveVisitCount(visitCount)
+
+        // Actualizar la UI con el nuevo contador
+        tvVisitCount.text = visitCount.toString()
     }
-    
-    private fun loadData() {
-        val username = sharedPreferencesHelper.getString(SharedPreferencesHelper.KEY_USERNAME, "Sin nombre")
-        val isFirstTime = sharedPreferencesHelper.getBoolean(SharedPreferencesHelper.KEY_IS_FIRST_TIME, true)
-        val userId = sharedPreferencesHelper.getInt(SharedPreferencesHelper.KEY_USER_ID, 0)
-        
-        val result = "Usuario: $username\nID: $userId\nPrimera vez: ${if (isFirstTime) "Sí" else "No"}"
-        textViewResult.text = result
+
+    private fun resetVisitCount() {
+        // Resetear el contador de visitas
+        sharedPreferencesHelper.saveVisitCount(0)
+        tvVisitCount.text = "0"
     }
-    
-    private fun clearAllData() {
-        sharedPreferencesHelper.clearAll()
-        textViewResult.text = ""
-        editTextUsername.setText("")
-        Toast.makeText(this, "Todas las preferencias han sido eliminadas", Toast.LENGTH_SHORT).show()
+
+    private fun setupDarkModeSwitch() {
+        val isDarkMode = sharedPreferencesHelper.getDarkModePreference()
+        switchDarkMode.isChecked = isDarkMode
     }
-    
-    private fun checkFirstTime() {
-        val isFirstTime = sharedPreferencesHelper.getBoolean(SharedPreferencesHelper.KEY_IS_FIRST_TIME, true)
-        
-        if (isFirstTime) {
-            Toast.makeText(this, "¡Bienvenido por primera vez!", Toast.LENGTH_LONG).show()
+
+    private fun saveDarkModePreference(isDarkMode: Boolean) {
+        sharedPreferencesHelper.saveDarkModePreference(isDarkMode)
+    }
+
+    private fun applyTheme() {
+        // Obtener si está activado el modo oscuro
+        val isDarkMode = sharedPreferencesHelper.getDarkModePreference()
+
+        // Aplicar el tema correspondiente según la preferencia
+        if (isDarkMode) {
+            setTheme(R.style.AppTheme_Dark)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            setTheme(R.style.AppTheme)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
 }

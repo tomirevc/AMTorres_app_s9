@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Atributos personalizados para temas -->
+    <attr name="backgroundColor" format="color" />
+    <attr name="titleTextColor" format="color" />
+    <attr name="subtitleTextColor" format="color" />
+    <attr name="primaryTextColor" format="color" />
+    <attr name="eyeIcon" format="reference" />
+</resources>

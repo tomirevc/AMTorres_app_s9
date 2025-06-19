@@ -1,0 +1,32 @@
+<resources>
+
+    <!-- Base application theme Light, hereda de MaterialComponents -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar"> <!-- Cambié el tema base a MaterialComponents -->
+        <!-- Personaliza tus colores y atributos aquí -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Atributos personalizados -->
+        <item name="backgroundColor">@color/white</item>
+        <item name="titleTextColor">@color/black</item>
+        <item name="subtitleTextColor">@color/black</item>
+        <item name="primaryTextColor">@color/black</item>
+        <item name="eyeIcon">@drawable/ic_eye</item>
+    </style>
+
+    <!-- Dark theme, hereda de MaterialComponents -->
+    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.DayNight"> <!-- Cambié el tema base a MaterialComponents -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Atributos personalizados -->
+        <item name="backgroundColor">@color/dark_background</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="subtitleTextColor">@color/white</item>
+        <item name="primaryTextColor">@color/white</item>
+        <item name="eyeIcon">@drawable/ic_eye_white</item>
+    </style>
+
+</resources>

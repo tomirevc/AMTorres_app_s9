@@ -1,3 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">app_s9</string>
+    <string name="app_name">SharedPreferences App</string>
+    <string name="main_title">Implementando\nSharedPreferences</string>
+    <string name="visit_counter_title">Contador de visitas</string>
+    <string name="reset_visits">Reiniciar visitas</string>
+    <string name="create_users_title">Crear usuarios</string>
+    <string name="user_profile">Perfil de usuarios</string>
+    <string name="dark_mode_title">Modo oscuro</string>
+    <string name="create_user_profile_title">Crear perfil de usuario</string>
+    <string name="name_hint">Nombre</string>
+    <string name="age_hint">Edad</string>
+    <string name="email_hint">Email</string>
+    <string name="save_button">Guardar</string>
+    <string name="load_button">Cargar</string>
+    <string name="clean_button">Limpiar</string>
 </resources>

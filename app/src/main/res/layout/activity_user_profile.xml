@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
+    tools:context=".UserProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <!-- Título Principal -->
+        <TextView
+            android:id="@+id/tvMainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Implementando\nSharedPreferences"
+            android:textSize="25sp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="?attr/titleTextColor"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Imagen Principal -->
+        <ImageView
+            android:id="@+id/ivProfileImage"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/ic_perfil"
+            android:layout_marginBottom="32dp"
+            android:padding="8dp"/> <!-- Añadir descripción para accesibilidad -->
+
+        <!-- Título del Formulario -->
+        <TextView
+            android:id="@+id/tvFormTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crear perfil de usuario"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="?attr/subtitleTextColor"
+            android:gravity="center"
+            android:background="@drawable/underline_background"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Formulario -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="24dp">
+
+            <!-- Campo Nombre -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Nombre"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="?attr/colorAccent"
+                app:hintTextColor="?attr/primaryTextColor"
+                app:boxBackgroundColor="?attr/backgroundColor"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="?attr/primaryTextColor"
+                    android:textColorHint="?attr/primaryTextColor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo Edad -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Edad"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="?attr/colorAccent"
+                app:hintTextColor="?attr/primaryTextColor"
+                app:boxBackgroundColor="?attr/backgroundColor"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="?attr/primaryTextColor"
+                    android:textColorHint="?attr/primaryTextColor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo Email -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:hint="Email"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="?attr/colorAccent"
+                app:hintTextColor="?attr/primaryTextColor"
+                app:boxBackgroundColor="?attr/backgroundColor"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="?attr/primaryTextColor"
+                    android:textColorHint="?attr/primaryTextColor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <!-- Botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Botón Guardar -->
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  Guardar"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_bold"
+                android:background="@drawable/gradient_button_with_icon"
+                android:drawableStart="@drawable/ic_save"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="32dp"
+                android:paddingVertical="12dp"
+                android:layout_marginBottom="16dp"
+                android:textAllCaps="false"
+                android:gravity="center" />
+
+            <!-- Botón Cargar -->
+            <Button
+                android:id="@+id/btnLoad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  Cargar"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_bold"
+                android:background="@drawable/gradient_button_with_icon"
+                android:drawableStart="@drawable/ic_load"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="32dp"
+                android:paddingVertical="12dp"
+                android:layout_marginBottom="16dp"
+                android:textAllCaps="false"
+                android:gravity="center" />
+
+            <!-- Botón Limpiar -->
+            <Button
+                android:id="@+id/btnClean"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  Limpiar"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_bold"
+                android:background="@drawable/gradient_button_with_icon"
+                android:drawableStart="@drawable/ic_clean"
+                android:drawablePadding="8dp"
+                android:paddingHorizontal="32dp"
+                android:paddingVertical="12dp"
+                android:layout_marginBottom="24dp"
+                android:textAllCaps="false"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
