@@ -4,7 +4,7 @@ Aplicación Android de ejemplo que demuestra el uso básico de SharedPreferences
 
 ## 📱 Icono de aplicación
 
-Esta aplicación implementa un sistema simple de SharedPreferences que permite:
+![Image](https://github.com/user-attachments/assets/6fa7b075-7641-43ab-971a-0b2ceaeca422)
 
 
 ## 📱 Modulo inicial con el contador de visitas y switch para cambiar de tema
